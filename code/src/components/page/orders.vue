@@ -94,12 +94,12 @@ export default {
       orderTypes: [
         {
           index: 0,
-          name: '代付款',
+          name: '待付款',
           className: 'order_item_active'
         },
         {
           index: 1,
-          name: '代发货',
+          name: '待发货',
           className: 'order_item'
         },
         {

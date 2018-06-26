@@ -19,7 +19,6 @@
     "postcss-viewport-units": "^0.1.4",
     "postcss-write-svg": "^3.0.1",
     "vue": "^2.5.2",
-    "vue-mescroll": "0.0.4",
     "vue-router": "^3.0.1"
   },
   "devDependencies": {

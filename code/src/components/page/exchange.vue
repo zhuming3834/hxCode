@@ -15,8 +15,7 @@
     </div>
     <div @click="loginBtnClick" class="sendBtn">兑换</div>
     <div class="exchange_text">
-        短信兑换：编辑短信内容 发送短信兑换码 DH796166 到 10658999，
-        可短信兑换此礼品(发送及接收短信免费)
+        请先验证您在移动积分商城兑换商品的手机号
     </div>
   </div>
 </template>
@@ -28,7 +27,7 @@ export default {
     return {
       tel: '',  // 用户输入的手机号
       yzm: '',  // 用户输入的验证码
-      yzhText: '点击获取验证码',
+      yzhText: '获取验证码',
       yzmBtnClass: 'yzhBtn',
       time: 60,
       timer: null,
@@ -37,7 +36,7 @@ export default {
   activated(){
     this.tel = '';  // 用户输入的手机号
     this.yzm = '';  // 用户输入的验证码
-    this.yzhText = '点击获取验证码';
+    this.yzhText = '获取验证码';
     this.yzmBtnClass = 'yzhBtn';
     this.time = 60;
     this.timer = null;
@@ -50,7 +49,8 @@ export default {
         return;
       }
       if (!self.$utils.checkTel(self.tel)) {
-          alert('请输入正确的手机号');
+          weui.loading('loading')
+          // alert('请输入正确的手机号');
           return;
       }
       this.$axios.get('user/user/findValidateCode.do',{
@@ -60,10 +60,10 @@ export default {
       }).then(function (res){
         if (res.data.ret_code == 0) {
            alert('验证码发送成功');
-           self.yzm = res.data.ret_data.validateCode;
+          //  self.yzm = res.data.ret_data.validateCode;
            self.imer = setInterval(function(){
              if (self.time <= 0) {
-               self.yzhText = '点击获取验证码';
+               self.yzhText = '获取验证码';
                self.time = 60;
                self.yzmBtnClass = 'yzmBtn';
                clearInterval(self.timer);
@@ -100,7 +100,7 @@ export default {
       }).then(function (res){
         if (res.data.ret_code == 0) {
           self.$utils.setUserInfo(res.data.ret_data);
-          alert('登录成功!');
+          alert('此手机号码暂无任何抵扣券或商品，请稍后再试');
           setTimeout(function(){
             window.history.back();
           },3000);

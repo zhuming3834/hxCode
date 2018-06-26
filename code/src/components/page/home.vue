@@ -205,12 +205,12 @@ export default {
         }
       }).then(function (res){
         if (res.data.ret_code == 0) {
-          weui.topTips('添加成功!');
+          weui.toast('添加成功!');
         } else {
-          alert(res.data.ret_msg);
+          weui.toast(res.data.ret_msg);
         }
       }).catch(function (error) {
-        alert('网路链接失败');
+        weui.toast('网路链接失败');
       });
     }
   },

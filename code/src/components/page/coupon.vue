@@ -71,10 +71,10 @@ export default {
           self.couponList = res.data.ret_data;
           self.couponList = [];
         } else {
-          alert(res.data.ret_msg);
+          weui.toast(res.data.ret_msg);
         }
       }).catch(function (error) {
-        alert('网路链接失败');
+        weui.toast('网路链接失败');
       });
     },
     // 可使用的
@@ -99,7 +99,7 @@ export default {
         for(var i = 0; i < len; i ++){
           if(this.couponList[i].couponId == couponId){
             if (this.price < parseInt(this.couponList[i].conditions)) {
-              alert('不满足使用条件');
+              weui.toast('不满足使用条件');
               return;
             } else {
               conpouItem = this.couponList[i];
@@ -132,6 +132,7 @@ export default {
   text-align: center;
   color: white;
   background-color: #1AAD19;
+  display: none;
 }
 .couponList {
   height: 1100px;

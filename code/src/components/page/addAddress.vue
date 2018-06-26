@@ -45,22 +45,21 @@ export default {
     sureBtnClick: function(){
       var self = this;
       if (self.personName.length == 0) {
-          alert('请输入收货人姓名');
+          weui.toast('请输入收货人姓名');
           return;
       }
       if (!self.$utils.checkTel(self.phoneNumber)) {
-          alert('请输入正确的手机号');
+          weui.toast('请输入正确的手机号');
           return;
       }
       if (self.province.length == 0) {
-          alert('请选择省市区');
+          weui.toast('请选择省市区');
           return;
       }
       if (self.detailed.length == 0) {
-          alert('请输入详细地址');
+          weui.toast('请输入详细地址');
           return;
       }
-      var self = this;
       this.$axios.get('/user/userInfo/createUserAddress.do',{
         params: {
           personName:      self.personName,     // 收货人姓名
@@ -73,15 +72,15 @@ export default {
         }
       }).then(function (res){
         if (res.data.ret_code == 0) {
-          alert('添加成功');
+          weui.toast('添加成功');
           setTimeout(function(){
             window.history.back();
           },3000);
         } else {
-          alert(res.data.ret_msg);
+          weui.toast(res.data.ret_msg);
         }
       }).catch(function (error) {
-        alert('网路链接失败');
+        weui.toast('网路链接失败');
       });
     },
     // 默认地址点击事件

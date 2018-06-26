@@ -45,10 +45,10 @@ export default {
         if (res.data.ret_code == 0) {
           self.addressList = res.data.ret_data;
         } else {
-          alert(res.data.ret_msg);
+          Toast(res.data.ret_msg);
         }
       }).catch(function (error) {
-        alert('网路链接失败');
+        Toast('网路链接失败');
       });
     },
     // 地址选择事件
@@ -102,10 +102,10 @@ export default {
         if (res.data.ret_code == 0) {
           self.getAddressData();
         } else {
-          alert(res.data.ret_msg);
+          Toast(res.data.ret_msg);
         }
       }).catch(function (error) {
-        alert('网路链接失败');
+        Toast('网路链接失败');
       });
     },
     // 编辑按钮点击事件
@@ -148,10 +148,10 @@ export default {
         if (res.data.ret_code == 0) {
           self.getAddressData();
         } else {
-          alert(res.data.ret_msg);
+          Toast(res.data.ret_msg);
         }
       }).catch(function (error) {
-        alert('网路链接失败');
+        Toast('网路链接失败');
       });
     },
     // 定新增地址点击事件

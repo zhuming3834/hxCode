@@ -134,10 +134,10 @@ export default {
           if (res.data.ret_code == 0) {
             self.wxBridgeReady(res.data.ret_data);
           } else {
-            alert(res.data.ret_msg);
+            weui.toast(res.data.ret_msg);
           }
         }).catch(function (error) {
-          alert('网路链接失败');
+          weui.toast('网路链接失败');
         });
       }
     },
@@ -154,30 +154,11 @@ export default {
           "paySign":data.paySign //微信签名
         },
         function(res){
-          alert(JSON.stringify(res))
           // 使用以上方式判断前端返回,微信团队郑重提示：res.err_msg将在用户支付成功后返回ok，但并不保证它绝对可靠。
           if(res.err_msg == "get_brand_wcpay_request：ok" ){
-            weui.alert('支付成功!', {
-              title: '提示',
-              buttons: [{
-                  label: 'OK',
-                  type: 'primary',
-                  onClick: function(){
-                    self.changeOrderStatus(data.oId,5);
-                  }
-              }]
-            });
+            self.changeOrderStatus(data.oId,5);
           }else{
-            weui.alert('支付失败!', {
-              title: '提示',
-              buttons: [{
-                  label: 'OK',
-                  type: 'primary',
-                  onClick: function(){
-                    self.changeOrderStatus(data.oId,6);
-                  }
-              }]
-            });
+            self.changeOrderStatus(data.oId,6);
           }
         }
       );
@@ -201,7 +182,7 @@ export default {
           });
         }
       }).catch(function (error) {
-        alert('网路链接失败');
+        weui.toast('网路链接失败');
       });
     },
     // 选择优惠卷  点击事件
@@ -262,18 +243,10 @@ export default {
           }
         } else {
           // alert(res.data.ret_msg);
-           weui.topTips(res.data.ret_msg, {
-            duration: 3000,
-            className: 'top_tip_warn',
-            callback: function(){ console.log('close') }
-          });
+           weui.toast(res.data.ret_msg);
         }
       }).catch(function (error) {
-         weui.topTips('网络连接失败', {
-            duration: 3000,
-            className: 'top_tip_warn',
-            callback: function(){ console.log('close') }
-          });
+         weui.toast('网络连接失败');
       });
     },
   },

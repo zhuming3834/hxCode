@@ -32,7 +32,7 @@ const router = new Router({
     {
       path: '/home',
       name: 'home',
-      meta: { title: "翺海商城" },
+      meta: { title: "翱海商城" },
       component: resolve => require(['@/components/page/home.vue'], resolve)
       // component: home
     },

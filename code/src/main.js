@@ -16,7 +16,7 @@ Vue.prototype.$citydata = citydata;
 
 var userId = utils.getUserID();
 
-axios.defaults.baseURL = 'http://m.ijiakj.com/wx_sc/api/';  // 商城
+axios.defaults.baseURL = 'http://m.ijiakj.com:8088/wx_sc/api/';  // 商城
 // axios.defaults.baseURL = 'http://120.79.29.194:7080'; // 杜克贷款
 axios.defaults.timeout = 10000;
 var baseKey = 'wx_sc'; // wx_sc dukeAPP
