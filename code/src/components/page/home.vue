@@ -122,7 +122,7 @@ export default {
             self.autoLogin(res.data.data.openid);
           }
         }else{
-          // window.location.href = 'http://gitlab.hgdqdev.cn/auth.html'
+          // window.location.href = 'http://m.ijiakj.com/auth.html'
         }
       }).catch(function (error) {});
      },
@@ -240,11 +240,11 @@ export default {
     width: 740px;
     margin: auto;
     padding-bottom: 20px;
-    display: -webkit-flex; /* Safari */
+    /* display: -webkit-flex;
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
-    justify-content: space-between;
+    justify-content: space-between; */
   }
 .goodsList::before, .container::after {
     content:"";
@@ -256,7 +256,7 @@ export default {
   .goodsItem1 {
     width: 359px;
     margin: 0 0 6px 3px;
-    /* float: left; */
+    float: left;
     display: inline-table;
     border: 1px solid #fafafa;
     text-align: center;
@@ -265,7 +265,7 @@ export default {
   .goodsItem2 {
     width: 359px;
     margin: 0 3px 6px 0;
-    /* float: right; */
+    float: right;
     display: inline-table;
     border: 1px solid #fafafa;
     text-align: center;
