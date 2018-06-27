@@ -122,7 +122,7 @@ export default {
             self.autoLogin(res.data.data.openid);
           }
         }else{
-          window.location.href = 'http://m.ijiakj.com/auth.html'
+         // window.location.href = 'http://m.ijiakj.com/auth.html'
         }
       }).catch(function (error) {});
      },
@@ -210,7 +210,7 @@ export default {
           alert(res.data.ret_msg);
         }
       }).catch(function (error) {
-        alert('网路链接失败');
+        self.$alert('网路链接失败');
       });
     }
   },

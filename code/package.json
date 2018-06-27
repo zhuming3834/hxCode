@@ -12,7 +12,6 @@
   "dependencies": {
     "axios": "^0.18.0",
     "cssnano": "^3.10.0",
-    "js-md5": "^0.7.3",
     "postcss-aspect-ratio-mini": "0.0.2",
     "postcss-cssnext": "^3.1.0",
     "postcss-px-to-viewport": "0.0.3",

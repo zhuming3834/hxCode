@@ -141,24 +141,30 @@ export default {
           }
         });
       } else if(index == 4){
-        // alert('您确定要退出登录吗？');
-        // localStorage.clear();
-        window.location.href = 'http://m.ijiakj.com/auth.html'
-        weui.confirm('您确定要退出登录吗？', {
-          title: '提示',
-          buttons: [{
-              label: '取消',
-              type: 'default',
-              onClick: function(){ console.log('no') }
-          }, {
-              label: '确定',
-              type: 'primary',
-              onClick: function(){
-                localStorage.clear();
-                window.location.href = 'http://m.ijiakj.com/auth.html'
-              }
-          }]
-        });
+        var conf = confirm('您确定要退出登录吗？');
+        if (conf == true) {
+          localStorage.clear();
+          window.location.href = 'http://m.ijiakj.com/auth.html'
+        } else {
+          return;
+        }
+
+
+        // weui.confirm('您确定要退出登录吗？', {
+        //   title: '提示',
+        //   buttons: [{
+        //       label: '取消',
+        //       type: 'default',
+        //       onClick: function(){ console.log('no') }
+        //   }, {
+        //       label: '确定',
+        //       type: 'primary',
+        //       onClick: function(){
+        //         localStorage.clear();
+        //         window.location.href = 'http://m.ijiakj.com/auth.html'
+        //       }
+        //   }]
+        // });
       }else{
         this.$router.push(path);
       }

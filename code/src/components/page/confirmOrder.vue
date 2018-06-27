@@ -91,7 +91,12 @@ export default {
     };
     this.tids = ''; // 商品  商品1,商品2 ……
     var backAddrerss = localStorage.getItem('address');
-    this.getAddressData(backAddrerss);
+    backAddrerss = JSON.parse(backAddrerss);
+    if (backAddrerss == '' || backAddrerss == null || backAddrerss == 'null') {
+      this.getAddressData();
+    } else {
+      this.address = backAddrerss;
+    }
     this.goodsList = JSON.parse(localStorage.getItem('selectGoods'));
     this.makeTotalPrice();
   },
@@ -100,13 +105,17 @@ export default {
     submitClick: function(){
       var self = this;
       if (self.address.id == '') {
-        alert('请选择收货地址');
-        self.$router.push({
-          path: '/address',
-          query: {
-            type: 0
-          }
-        });
+        var conf = confirm('请选择收货地址');
+        if (conf == true) {
+          self.$router.push({
+            path: '/address',
+            query: {
+              type: 0
+            }
+          });
+        } else {
+          return;
+        }
       }else{;
         self.$axios.get('basic/commodity/createOrder.do',{
           params: {
@@ -213,7 +222,7 @@ export default {
       });
     },
     // 获取地址
-    getAddressData: function(backAddrerss){
+    getAddressData: function(){
       var self = this;
       this.$axios.get('/user/userInfo/findUserAddrees.do',{
         params: {}
@@ -221,7 +230,7 @@ export default {
         if (res.data.ret_code == 0) {
           var len = res.data.ret_data.length;
           for(var i = 0; i < len; i ++){
-            if(res.data.ret_data[i].id == self.backAddrerss){
+            if(res.data.ret_data[i].id == self.id){
               self.address = res.data.ret_data[i];
             }
           }

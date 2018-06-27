@@ -57,7 +57,7 @@ export default {
         var len = this.addressList.length;
         for(var i = 0; i < len; i++){
           if (this.addressList[i].id == id) {
-            localStorage.setItem('address',JSON.stringify(this.addressList[i].id))
+            localStorage.setItem('address',JSON.stringify(this.addressList[i]))
           }
         }
         window.history.back();
@@ -120,24 +120,29 @@ export default {
     // 删除按钮点击事件
     delBtnClick: function(id){
       var self = this;
-      // alert('确认删除该收获地址吗？');
-      // self.cancleRequest(id);
-      weui.confirm('确认删除该收获地址吗？', {
-        title: '提示',
-        buttons: [{
-            label: '取消',
-            type: 'default',
-            onClick: function(){
-              console.log('no')
-            }
-        }, {
-            label: '确定',
-            type: 'primary',
-            onClick: function(){
-              self.cancleRequest(id);
-            }
-        }]
-      });
+      var conf = confirm('确认删除该收获地址吗？');
+      if (conf == true) {
+        self.cancleRequest(id);
+      } else {
+        return;
+      }
+
+      // weui.confirm('确认删除该收获地址吗？', {
+      //   title: '提示',
+      //   buttons: [{
+      //       label: '取消',
+      //       type: 'default',
+      //       onClick: function(){
+      //         console.log('no')
+      //       }
+      //   }, {
+      //       label: '确定',
+      //       type: 'primary',
+      //       onClick: function(){
+      //         self.cancleRequest(id);
+      //       }
+      //   }]
+      // });
     },
     // 删除请求
     cancleRequest: function(id){

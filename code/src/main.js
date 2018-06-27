@@ -4,7 +4,7 @@ import Vue from 'vue'
 import App from './App'
 import router from './router'
 
-import md5 from 'js-md5';
+
 import axios from 'axios';
 
 import utils from '../static/utils.js';
