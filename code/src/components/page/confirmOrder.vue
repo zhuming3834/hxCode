@@ -96,13 +96,15 @@ export default {
       this.$router.push('/home');
     }
 
-    var backAddrerss = localStorage.getItem('address');
-    backAddrerss = JSON.parse(backAddrerss);
-    if (backAddrerss == '' || backAddrerss == null || backAddrerss == 'null') {
-      this.getAddressData();
-    } else {
-      this.address = backAddrerss;
-    }
+
+    this.getAddressData();
+    // var backAddrerss = localStorage.getItem('address');
+    // backAddrerss = JSON.parse(backAddrerss);
+    // if (backAddrerss == '' || backAddrerss == null || backAddrerss == 'null') {
+    //   this.getAddressData();
+    // } else {
+    //   this.address = backAddrerss;
+    // }
     this.makeTotalPrice();
   },
   methods: {
