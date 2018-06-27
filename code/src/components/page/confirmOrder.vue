@@ -167,7 +167,7 @@ export default {
       var self = this;
       self.$axios.get('basic/commodity/modifyOrderState.do',{
         params: {
-          orderId: oId,   // 订单号
+          oId: oId,   // 订单号
           buyState: buyState, // 状态： 5成功 6失败
         }
       }).then(function (res){
