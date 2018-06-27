@@ -90,6 +90,12 @@ export default {
       couponId: ''
     };
     this.tids = ''; // 商品  商品1,商品2 ……
+
+    this.goodsList = JSON.parse(localStorage.getItem('selectGoods'));
+    if (this.goodsList == '' || this.goodsList == null || this.goodsList == 'null') {
+      this.$router.push('/home');
+    }
+
     var backAddrerss = localStorage.getItem('address');
     backAddrerss = JSON.parse(backAddrerss);
     if (backAddrerss == '' || backAddrerss == null || backAddrerss == 'null') {
@@ -97,7 +103,6 @@ export default {
     } else {
       this.address = backAddrerss;
     }
-    this.goodsList = JSON.parse(localStorage.getItem('selectGoods'));
     this.makeTotalPrice();
   },
   methods: {
@@ -126,6 +131,7 @@ export default {
         }).then(function (res){
           if (res.data.ret_code == 0) {
             self.wxBridgeReady(res.data.ret_data);
+            localStorage.removeItem('selectGoods');
           } else {
             alert('操作失败');
           }
@@ -161,11 +167,10 @@ export default {
       var self = this;
       self.$axios.get('basic/commodity/modifyOrderState.do',{
         params: {
-          oId: oId,   // 订单号
+          orderId: oId,   // 订单号
           buyState: buyState, // 状态： 5成功 6失败
         }
       }).then(function (res){
-        alert(res.data.ret_code);
         if (res.data.ret_code == 0) {
           var type = buyState == 5 ? 1:0;
           self.$router.push({
@@ -230,9 +235,33 @@ export default {
       }).then(function (res){
         if (res.data.ret_code == 0) {
           var len = res.data.ret_data.length;
-          for(var i = 0; i < len; i ++){
-            if(res.data.ret_data[i].id == self.id){
-              self.address = res.data.ret_data[i];
+          if (len == 0) {  // 用户没地址
+            self.address = {
+              id: '',
+              personName: '', // 收货人姓名
+              phoneNumber: '',  // 收货人电话
+              province: '',// 省
+              city: '',    // 市
+              area: '',     // 区县
+              detailed: '',// 详细地址
+              isDefault: 1 // 是否是默认地址 0是 1否
+            };
+          } else {  // 用户有地址 就取缓存
+            var backAddrerss = localStorage.getItem('address');
+            backAddrerss = JSON.parse(backAddrerss);
+            if (backAddrerss == '' || backAddrerss == null || backAddrerss == 'null') {
+              self.address = {
+                id: '',
+                personName: '', // 收货人姓名
+                phoneNumber: '',  // 收货人电话
+                province: '',// 省
+                city: '',    // 市
+                area: '',     // 区县
+                detailed: '',// 详细地址
+                isDefault: 1 // 是否是默认地址 0是 1否
+              };
+            } else {
+              self.address = backAddrerss;
             }
           }
         } else {
