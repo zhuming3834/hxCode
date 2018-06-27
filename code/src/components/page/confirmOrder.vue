@@ -133,7 +133,7 @@ export default {
             self.wxBridgeReady(res.data.ret_data);
             localStorage.removeItem('selectGoods');
           } else {
-            alert('操作失败');
+            alert(res.data.msg);
           }
         }).catch(function (error) {
           alert('网路链接失败');

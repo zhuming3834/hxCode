@@ -98,7 +98,14 @@ export default {
   mounted() {
   },
   activated(){
-    this.cid = this.$route.query.cid;
+    this.cid = this.$route.query.cid || '';
+    this.buyAddNum = 1;
+    this.carAddNum = 1;
+    this.lijiBuy = false;
+    this.lijiCar = false;
+    if(this.cid == '' || this.cid == null){
+      this.$router.push('/home');
+    }
     this.getDetail();
   },
   methods: {
