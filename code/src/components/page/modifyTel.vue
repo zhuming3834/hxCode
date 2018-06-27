@@ -3,7 +3,7 @@
     <div class="modifyTel_line">
       <div class="title">手机号</div>
       <div class="input">
-        <input v-model="tel" type="tel" maxlength="11" placeholder="请输入验证码" />
+        <input v-model="tel" type="tel" maxlength="11" placeholder="请输入手机号" />
       </div>
     </div>
     <div class="modifyTel_line">

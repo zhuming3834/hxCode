@@ -8,8 +8,8 @@
         </div>
         <div class="line2" @click="selectClick(item.id)">{{item.province + item.city + item.area + item.detailed }}</div>
         <div class="line3">
-          <div :class="[item.isDefault == 1 ? 'line3_def': 'line3_def2']" @click="checkBoxClick(item.id,item.isDefault)">
-            <span v-if="item.isDefault == 1">默认地址</span>
+          <div :class="[item.isDefault == 0 ? 'line3_def': 'line3_def2']" @click="checkBoxClick(item.id,item.isDefault)">
+            <span v-if="item.isDefault == 0">默认地址</span>
             <span v-else>默认地址</span>
           </div>
           <!-- <div class="line3_def2" @click="checkBoxClick(item.id,false)" v-else>设为默认地址</div> -->

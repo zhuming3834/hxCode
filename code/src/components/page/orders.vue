@@ -6,8 +6,8 @@
       </div>
     </div>
     <div class="list" v-if="type == 0">
-      <div v-if="order.buyState == 6" class="listItem" v-for="order in orders" :key="order.oId">
-        <div class="list_status">代付款</div>
+      <div v-if="order.buyState == 6 || order.buyState == 1" class="listItem" v-for="order in orders" :key="order.oId">
+        <div class="list_status">待付款</div>
         <div class="goodsList">
           <GoodsItem
           v-for="goods in order.commodityList"
@@ -25,8 +25,8 @@
       </div>
     </div>
     <div class="list" v-if="type == 1">
-      <div v-if="order.buyState == 2 || orders.buyState == 5" class="listItem" v-for="order in orders" :key="order.oId">
-        <div class="list_status">代发货</div>
+      <div v-if="order.buyState == 2 || order.buyState == 5" class="listItem" v-for="order in orders" :key="order.oId">
+        <div class="list_status">待发货</div>
         <div class="goodsList">
           <GoodsItem
           v-for="goods in order.commodityList"
@@ -63,7 +63,7 @@
       </div>
     </div>
     <div class="list" v-if="type == 3">
-      <div v-if="order.buyState == 5" class="listItem" v-for="order in orders" :key="order.oId">
+      <div v-if="order.buyState == 4" class="listItem" v-for="order in orders" :key="order.oId">
         <div class="list_status">已完成</div>
         <div class="goodsList">
           <GoodsItem

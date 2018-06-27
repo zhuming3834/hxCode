@@ -3,7 +3,7 @@
     <div class="modifyTel_line">
       <div class="title">手机号</div>
       <div class="input">
-        <input v-model="tel" type="tel" maxlength="11" placeholder="请输入验证码" />
+        <input v-model="tel" type="tel" maxlength="11" placeholder="请输入手机号" />
       </div>
     </div>
     <div class="modifyTel_line">
@@ -92,24 +92,26 @@ export default {
           alert('请输入正确的验证码');
           return;
       }
-      this.$axios.get('user/user/loginAndNew.do',{
-        params: {
-          phone: self.tel,
-          validateCode: self.yzm
-        }
-      }).then(function (res){
-        if (res.data.ret_code == 0) {
-          self.$utils.setUserInfo(res.data.ret_data);
-          alert('此手机号码暂无任何抵扣券或商品，请稍后再试');
-          setTimeout(function(){
-            window.history.back();
-          },3000);
-        } else {
-          alert(res.data.ret_msg);
-        }
-      }).catch(function (error) {
-        alert('网络连接失败');
-      });
+      alert('此手机号码暂无任何抵扣券或商品，请稍后再试');
+
+      // this.$axios.get('user/user/loginAndNew.do',{
+      //   params: {
+      //     phone: self.tel,
+      //     validateCode: self.yzm
+      //   }
+      // }).then(function (res){
+      //   if (res.data.ret_code == 0) {
+      //     self.$utils.setUserInfo(res.data.ret_data);
+      //     alert('此手机号码暂无任何抵扣券或商品，请稍后再试');
+      //     setTimeout(function(){
+      //       window.history.back();
+      //     },3000);
+      //   } else {
+      //     alert('此手机号码暂无任何抵扣券或商品，请稍后再试');
+      //   }
+      // }).catch(function (error) {
+      //   alert('网络连接失败');
+      // });
     }
   },
 }
