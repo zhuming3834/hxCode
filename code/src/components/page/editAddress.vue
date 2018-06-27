@@ -18,7 +18,7 @@
     </div>
     <div class="line">
       <div class="title">默认地址</div>
-      <div @click="checkBoxClick" id="check" :class="[addressItem.isDefault == 1 ? 'checkBoxEd' : 'checkBox']"></div>
+      <div @click="checkBoxClick" id="check" :class="[addressItem.isDefault == 0 ? 'checkBoxEd' : 'checkBox']"></div>
     </div>
     <div @click="sureBtnClick" class="addAddress">确定</div>
   </div>

@@ -141,6 +141,9 @@ export default {
           }
         });
       } else if(index == 4){
+        // alert('您确定要退出登录吗？');
+        // localStorage.clear();
+        window.location.href = 'http://m.ijiakj.com/auth.html'
         weui.confirm('您确定要退出登录吗？', {
           title: '提示',
           buttons: [{
@@ -152,7 +155,7 @@ export default {
               type: 'primary',
               onClick: function(){
                 localStorage.clear();
-                window.location.href = 'http://gitlab.hgdqdev.cn/auth.html'
+                window.location.href = 'http://m.ijiakj.com/auth.html'
               }
           }]
         });

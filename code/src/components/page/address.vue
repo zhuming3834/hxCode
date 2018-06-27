@@ -45,10 +45,10 @@ export default {
         if (res.data.ret_code == 0) {
           self.addressList = res.data.ret_data;
         } else {
-          Toast(res.data.ret_msg);
+          alert(res.data.ret_msg);
         }
       }).catch(function (error) {
-        Toast('网路链接失败');
+        alert('网路链接失败');
       });
     },
     // 地址选择事件
@@ -57,7 +57,7 @@ export default {
         var len = this.addressList.length;
         for(var i = 0; i < len; i++){
           if (this.addressList[i].id == id) {
-            localStorage.setItem('address',JSON.stringify(this.addressList[i]))
+            localStorage.setItem('address',JSON.stringify(this.addressList[i].id))
           }
         }
         window.history.back();
@@ -102,10 +102,10 @@ export default {
         if (res.data.ret_code == 0) {
           self.getAddressData();
         } else {
-          Toast(res.data.ret_msg);
+          alert(res.data.ret_msg);
         }
       }).catch(function (error) {
-        Toast('网路链接失败');
+        alert('网路链接失败');
       });
     },
     // 编辑按钮点击事件
@@ -120,6 +120,8 @@ export default {
     // 删除按钮点击事件
     delBtnClick: function(id){
       var self = this;
+      // alert('确认删除该收获地址吗？');
+      // self.cancleRequest(id);
       weui.confirm('确认删除该收获地址吗？', {
         title: '提示',
         buttons: [{
@@ -148,10 +150,10 @@ export default {
         if (res.data.ret_code == 0) {
           self.getAddressData();
         } else {
-          Toast(res.data.ret_msg);
+          alert(res.data.ret_msg);
         }
       }).catch(function (error) {
-        Toast('网路链接失败');
+        alert('网路链接失败');
       });
     },
     // 定新增地址点击事件

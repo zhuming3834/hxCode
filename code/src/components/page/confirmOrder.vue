@@ -91,11 +91,7 @@ export default {
     };
     this.tids = ''; // 商品  商品1,商品2 ……
     var backAddrerss = localStorage.getItem('address');
-    if (backAddrerss == null || backAddrerss == 'null') {
-      this.getAddressData();
-    } else {
-      this.address = JSON.parse(backAddrerss);
-    }
+    this.getAddressData(backAddrerss);
     this.goodsList = JSON.parse(localStorage.getItem('selectGoods'));
     this.makeTotalPrice();
   },
@@ -104,24 +100,12 @@ export default {
     submitClick: function(){
       var self = this;
       if (self.address.id == '') {
-        weui.confirm('请选择收货地址', {
-            title: '提示',
-            buttons: [{
-                label: '取消',
-                type: 'default',
-                onClick: function(){ console.log('no') }
-            }, {
-                label: '确定',
-                type: 'primary',
-                onClick: function(){
-                  self.$router.push({
-                    path: '/address',
-                    query: {
-                      type: 0
-                    }
-                  });
-                }
-            }]
+        alert('请选择收货地址');
+        self.$router.push({
+          path: '/address',
+          query: {
+            type: 0
+          }
         });
       }else{;
         self.$axios.get('basic/commodity/createOrder.do',{
@@ -229,7 +213,7 @@ export default {
       });
     },
     // 获取地址
-    getAddressData: function(){
+    getAddressData: function(backAddrerss){
       var self = this;
       this.$axios.get('/user/userInfo/findUserAddrees.do',{
         params: {}
@@ -237,12 +221,11 @@ export default {
         if (res.data.ret_code == 0) {
           var len = res.data.ret_data.length;
           for(var i = 0; i < len; i ++){
-            if(res.data.ret_data[i].id == self.id){
+            if(res.data.ret_data[i].id == self.backAddrerss){
               self.address = res.data.ret_data[i];
             }
           }
         } else {
-          // alert(res.data.ret_msg);
            alert(res.data.ret_msg);
         }
       }).catch(function (error) {
