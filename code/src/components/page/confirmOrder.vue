@@ -30,7 +30,7 @@
       <input class="message_input" placeholder="点击添加留言" />
     </div>
     <div @click="selectConpouClick" class="coupon">
-      <div class="message_title">优惠卷：</div>
+      <div class="message_title">优惠券：</div>
       <div class="coupon_select">暂无此类优惠信息</div>
     </div>
     <div class="about">
@@ -127,7 +127,7 @@ export default {
           if (res.data.ret_code == 0) {
             self.wxBridgeReady(res.data.ret_data);
           } else {
-            alert(res.data.ret_msg);
+            alert('操作失败');
           }
         }).catch(function (error) {
           alert('网路链接失败');
@@ -149,9 +149,9 @@ export default {
         function(res){
           // 使用以上方式判断前端返回,微信团队郑重提示：res.err_msg将在用户支付成功后返回ok，但并不保证它绝对可靠。
           if(res.err_msg == "get_brand_wcpay_request：ok" ){
-            self.changeOrderStatus(data.oId,5); // 支付成功
+            self.changeOrderStatus(data.orderId,5); // 支付成功
           }else{
-            self.changeOrderStatus(data.oId,6); // 支付失败
+            self.changeOrderStatus(data.orderId,6); // 支付失败
           }
         }
       );
@@ -165,6 +165,7 @@ export default {
           buyState: buyState, // 状态： 5成功 6失败
         }
       }).then(function (res){
+        alert(res.data.ret_code);
         if (res.data.ret_code == 0) {
           var type = buyState == 5 ? 1:0;
           self.$router.push({

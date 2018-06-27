@@ -82,7 +82,6 @@ export default {
     },
     // 提交按钮点击事件
     loginBtnClick: function(){
-        return;
       var self = this;
       if (!self.$utils.checkTel(self.tel)) {
           alert('请输入正确的手机号');

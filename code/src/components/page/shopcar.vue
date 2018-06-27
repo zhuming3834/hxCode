@@ -23,7 +23,7 @@
     <div class="car_bottom">
       <div @click="allCheckClick" v-bind:class="[isAll ? 'car_bottom_left': 'car_bottom_left2']">
         全选
-        <span class="allNum">共<span style="color: red;">{{allNum}}</span>件商品</span>
+        <span class="allNum">共<span style="color: red;">{{allNum}}</span>种商品</span>
         <span class="allPrice">合计<span style="color: red;">{{allPrice}}</span>元</span>
       </div>
       <div @click="confirmClick" class="car_bottom_right">结算</div>
@@ -63,7 +63,7 @@ export default {
         for(var i = 0; i < len; i ++){
           if (this.goodsList[i].ischeck == true) {
             this.allNum = this.allNum + 1;
-            this.allPrice = this.allPrice + this.goodsList[i].price;
+            this.allPrice = this.allPrice + this.goodsList[i].price * this.goodsList[i].buyNum;
             this.cIds = this.cIds + this.goodsList[i].tid + ',';
             this.selectGoods.push(this.goodsList[i]);
             count ++ ;

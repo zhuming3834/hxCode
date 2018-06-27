@@ -55,7 +55,7 @@ export default {
         },
         {
           index: 1,
-          name: '待收货',
+          name: '待发货',
           imagePath: require('../../assets/images/order_send2.png')
         },
         {
