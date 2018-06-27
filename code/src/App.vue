@@ -18,6 +18,9 @@ export default {
     padding: 0;
     background-color: #fafafa;
   }
+  img {
+    content: normal !important;
+  }
   .weui-animate-fade-out{
     -webkit-animation:d ease 2s forwards !important;
     animation:d ease 2s forwards !important;
