@@ -23,7 +23,7 @@ npm run build --report
 For a detailed explanation on how things work, check out the [guide](http://vuejs-templates.github.io/webpack/) and [docs for vue-loader](http://vuejs.github.io/vue-loader).
 
 git add .
-git commit -m "项目结构"
+git commit -m "订单点击"
 git push -u origin master
 
 git config --global user.email "zhuming3834@sina.com"

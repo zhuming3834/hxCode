@@ -22,11 +22,10 @@ export default {
     desc: String,
     price: Number,
     id: String,
-    num: Number
+    num: Number,
   },
   methods: {
     goodsItemClick: function(id){
-      id = 1;
       this.$router.push({
         path: '/goodsDetail',
         query: {

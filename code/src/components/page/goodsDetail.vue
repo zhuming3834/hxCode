@@ -105,8 +105,9 @@ export default {
     this.lijiCar = false;
     if(this.cid == '' || this.cid == null){
       this.$router.push('/home');
+    }else{
+      this.getDetail();
     }
-    this.getDetail();
   },
   methods: {
     closeClick(){
