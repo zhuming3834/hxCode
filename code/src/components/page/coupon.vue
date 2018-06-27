@@ -71,10 +71,10 @@ export default {
           self.couponList = res.data.ret_data;
           self.couponList = [];
         } else {
-          weui.toast(res.data.ret_msg);
+          alert(res.data.ret_msg);
         }
       }).catch(function (error) {
-        weui.toast('网路链接失败');
+        alert('网路链接失败');
       });
     },
     // 可使用的
@@ -99,7 +99,7 @@ export default {
         for(var i = 0; i < len; i ++){
           if(this.couponList[i].couponId == couponId){
             if (this.price < parseInt(this.couponList[i].conditions)) {
-              weui.toast('不满足使用条件');
+              alert('不满足使用条件');
               return;
             } else {
               conpouItem = this.couponList[i];

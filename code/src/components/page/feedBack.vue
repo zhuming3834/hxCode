@@ -17,7 +17,7 @@ export default {
     // 提交按钮点击事件
     sendBtnClick: function(){
       setTimeout(function(){
-        alert('提交成功成功!');
+        alert('提交成功!');
       },1500)
     }
   },

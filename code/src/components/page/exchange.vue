@@ -49,8 +49,8 @@ export default {
         return;
       }
       if (!self.$utils.checkTel(self.tel)) {
-          weui.loading('loading')
-          // alert('请输入正确的手机号');
+          // weui.loading('loading')
+          alert('请输入正确的手机号');
           return;
       }
       this.$axios.get('user/user/findValidateCode.do',{

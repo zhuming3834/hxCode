@@ -46,7 +46,7 @@ export default {
         return;
       }
       if (!self.$utils.checkTel(self.tel)) {
-          weui.toast('请输入正确的手机号');
+          alert('请输入正确的手机号');
           return;
       }
       this.$axios.get('user/user/findValidateCode.do',{

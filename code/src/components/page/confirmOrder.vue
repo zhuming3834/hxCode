@@ -134,10 +134,10 @@ export default {
           if (res.data.ret_code == 0) {
             self.wxBridgeReady(res.data.ret_data);
           } else {
-            weui.toast(res.data.ret_msg);
+            alert(res.data.ret_msg);
           }
         }).catch(function (error) {
-          weui.toast('网路链接失败');
+          alert('网路链接失败');
         });
       }
     },
@@ -182,7 +182,7 @@ export default {
           });
         }
       }).catch(function (error) {
-        weui.toast('网路链接失败');
+        alert('网路链接失败');
       });
     },
     // 选择优惠卷  点击事件
@@ -243,10 +243,10 @@ export default {
           }
         } else {
           // alert(res.data.ret_msg);
-           weui.toast(res.data.ret_msg);
+           alert(res.data.ret_msg);
         }
       }).catch(function (error) {
-         weui.toast('网络连接失败');
+         alert('网络连接失败');
       });
     },
   },
